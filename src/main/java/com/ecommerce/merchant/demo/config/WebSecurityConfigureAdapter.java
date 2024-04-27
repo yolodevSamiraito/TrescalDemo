@@ -26,7 +26,10 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 @RequiredArgsConstructor
 @EnableMethodSecurity
 public class WebSecurityConfigureAdapter {
-    private static final String[] WHITE_LIST_URL = {"/merchant/fetchAllProducts"};
+    private static final String[] WHITE_LIST_URL = {"/merchant/fetchAllProducts",
+            "/merchant/addProduct",
+            "/merchant/fetchById/**",
+            "/merchant/updateProduct"};
 
     @Bean
     public PasswordEncoder passwordEncoder() {

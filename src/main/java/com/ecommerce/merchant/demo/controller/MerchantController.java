@@ -25,9 +25,28 @@ public class MerchantController {
     }
 
     @PostMapping("/addProduct")
-    public ResponseEntity<ProductDTO> saveProduct(@RequestBody ProductDTO productDTO){
+    public ResponseEntity<ProductDTO> addProduct(@RequestBody ProductDTO productDTO){
         ProductDTO productCreated = merchantService.addProduct(productDTO);
 
         return new ResponseEntity<>(productCreated, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/fetchById/{id}")
+    public ResponseEntity<ProductDTO> findProductById(@PathVariable Integer id){
+
+        return merchantService.findProductById(id);
+    }
+
+    @PutMapping("/updateProduct")
+    public ResponseEntity<ProductDTO> updateProduct(@RequestBody ProductDTO productDTO){
+        ProductDTO productUpdated = merchantService.updateProduct(productDTO);
+
+        return new ResponseEntity<>(productUpdated, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/deleteProduct/{id}")
+    public ResponseEntity<Void> deleteProduct(@PathVariable int id) {
+
+        return merchantService.deleteProduct(id);
     }
 }
