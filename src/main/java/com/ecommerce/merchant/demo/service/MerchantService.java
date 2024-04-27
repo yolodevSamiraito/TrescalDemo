@@ -22,4 +22,9 @@ public class MerchantService {
 
         return products.stream().map(MerchantMapper.INSTANCE::mapProductToProductDTO).collect(Collectors.toList());
     }
+
+    public ProductDTO addProduct(ProductDTO productDTO) {
+        Product savedProduct = merchantRepo.save(MerchantMapper.INSTANCE.mapProduactDTOtoProduct(productDTO));
+        return MerchantMapper.INSTANCE.mapProductToProductDTO(savedProduct);
+    }
 }
